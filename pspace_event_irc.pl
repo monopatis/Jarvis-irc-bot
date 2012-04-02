@@ -8,9 +8,9 @@ my $srv = IO::Socket::INET->new(PeerAddr=>'irc.freenode.net',
 	Proto=>'tcp',
 	Timeout=>'30')||print "Cannot wait more... 30 secs already passed ! $!\n";
 
-print $srv "USER Botaki 8 * :Perl IRC\r\n";
+print $srv "USER events 8 * :Perl IRC\r\n";
 print $srv "NICK PspaceEvents\r\n";
-print $srv "JOIN #reprap.gr\r\n";
+print $srv "JOIN #p-space\r\n";
 #$0 = "stealth";
 my $response = 'foo';
 my $ready = 0;
@@ -30,9 +30,9 @@ while($response = <$srv>)
 
 	if (($response =~ /PRIVMSG/) && ($response =~ /PspaceEvents who/i))
 	{
-#		print $srv "PRIVMSG #reprap.gr :$message, $time ago\r\n";
+#		print $srv "PRIVMSG #p-space :$message, $time ago\r\n";
 	}
-	if (($response =~ /PRIVMSG/) && ($response =~ /PspaceEvents start/i))
+	if (($response =~ /PRIVMSG/) && ($response =~ /PspaceEvents sousami anoi3e/i))
 	{
 		$ready = 1;
 	}
@@ -75,7 +75,7 @@ while($response = <$srv>)
 				$message = 'Card was used by ' . $user ; 
 			}
 #			'P-space is open' '$message, $time ago' 
- 			print $srv "PRIVMSG #reprap.gr :$message, $time ago\r\n";
+ 			print $srv "PRIVMSG #p-space :$message, $time ago\r\n";
 			}
 		sleep(5);
 	}
